@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           category: this.category,
+          databse: database,
         ),
         SizedBox(height: 10,),
         PromocaoDestaque(
@@ -58,14 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget estabelecimentosDestaque(BuildContext context) {
     return FutureBuilder<List<Estabelecimento>>(
-      future: database.getEstabelecimentos(),
+      future: database.getEstabelecimentosByCategoria(this.category),
       builder: (context, snapshot) {
         if(snapshot.connectionState == ConnectionState.done){
-          List<Estabelecimento> estabelecimentos = [];
-          snapshot.data!.forEach((estabelecimento) {
-            if(estabelecimento.categorias.contains(category))
-              estabelecimentos.add(estabelecimento);
-          });
+          List<Estabelecimento> estabelecimentos = snapshot.data!;
           if(estabelecimentos.length > 0)
             return Column(
               children: estabelecimentos.map((estabelecimento) => EstabelecimentoItem(data: estabelecimento)).toList(),

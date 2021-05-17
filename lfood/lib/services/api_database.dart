@@ -1,9 +1,37 @@
+import 'package:lfood/models/categoria.dart';
 import 'package:lfood/models/estabelecimento.dart';
 import 'package:lfood/models/opicao.dart';
 import 'package:lfood/models/promocao.dart';
 import 'package:lfood/models/time_variation.dart';
 
 class ApiDatabase{
+
+  final List<Categoria> _categorias = [
+    Categoria(
+      nome: "restaurante",
+      imageUrl: "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395__340.jpg"
+    ),
+    Categoria(
+      nome: "lanche", 
+      imageUrl: "https://www.minervafoods.com/wp-content/uploads/2016/06/como_fazer_hamburguer_caseiro.jpg"
+    ),
+    Categoria(
+      nome: "sushi", 
+      imageUrl: "https://blog-static.deliway.com.br/assets/base/1ff/8a7/b5d/900-473-tipos-de-sushi.jpg"
+    ),
+    Categoria(
+      nome: "pizza", 
+      imageUrl: "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395__340.jpg"
+    ),
+    Categoria(
+      nome: "marmita", 
+      imageUrl: "https://static1.casapraticaqualita.com.br/articles/6/88/6/@/944-marmitas-com-atum-podem-estragar-no-calo-article_content_img-2.jpg"
+    ),
+    Categoria(
+      nome: "bebida", 
+      imageUrl: "https://exame.com/wp-content/uploads/2020/08/cerveja-gelada-e1598542702646-1.jpg?quality=70&strip=info"
+    ),
+  ];
 
   final List<Estabelecimento> _estabelecimentos = [
     Estabelecimento(
@@ -321,10 +349,40 @@ class ApiDatabase{
     ),
   };
 
+  List<Categoria> getCategorias(){ return _categorias; }
+
   Future<List<Estabelecimento>> getEstabelecimentos(){
     return Future.delayed(
       Duration(seconds: 2),
       () => _estabelecimentos,
+    );
+  }
+
+  Future<List<Estabelecimento>> getEstabelecimentosUsingFilter(String filter){
+    return Future.delayed(
+      Duration(seconds: 2),
+      (){
+        List<Estabelecimento> result = [];
+        _estabelecimentos.forEach((estabelecimento) {
+          if(estabelecimento.nome.toLowerCase().contains(filter.toLowerCase()))
+            result.add(estabelecimento);
+        });
+        return result;
+      },
+    );
+  }
+
+  Future<List<Estabelecimento>> getEstabelecimentosByCategoria(String categoria){
+    return Future.delayed(
+      Duration(seconds: 2),
+      (){
+        List<Estabelecimento> results = [];
+        _estabelecimentos.forEach((estabelecimento) {
+          if(estabelecimento.categorias.contains(categoria))
+            results.add(estabelecimento);
+        });
+        return results;
+      },
     );
   }
 

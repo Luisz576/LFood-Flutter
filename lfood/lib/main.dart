@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lfood/screens/home/home_screen.dart';
+import 'package:lfood/screens/orders/orders_screen.dart';
+import 'package:lfood/screens/profile/profile_screen.dart';
+import 'package:lfood/screens/search/search_screen.dart';
 import 'package:lfood/widgets/custom_bottom_bar.dart';
 
 void main(){
@@ -17,6 +20,9 @@ class _MyAppState extends State<MyApp> {
 
   List<Widget> _screens = [
     HomeScreen(),
+    SearchScreen(),
+    OrdersScreen(),
+    ProfileScreen(),
   ];
 
   @override

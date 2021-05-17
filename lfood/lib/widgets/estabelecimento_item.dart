@@ -13,7 +13,7 @@ class EstabelecimentoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        print(data.nome);
+        print(data.nome);//TODO: OPEN ESTABELECIMENTO
       },
       child: Card(
         child: Padding(

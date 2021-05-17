@@ -7,4 +7,6 @@ class AppColors{
   static Color secundaryColorLight = Color.fromRGBO(240, 0, 40, 1);
   static Color black = Colors.black;
   static Color white = Colors.white;
+  static Color grey = Colors.grey;
+  static Color darkGrey = Colors.black45;
 }
