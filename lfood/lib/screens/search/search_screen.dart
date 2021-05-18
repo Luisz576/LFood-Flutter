@@ -13,27 +13,28 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 40,),
-        SearchCamp(),
-        Padding(
-          padding: EdgeInsets.all(10),
-          child: Text("Busque pela categoria",
+    return Padding(
+      padding: EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 40,),
+          SearchCamp(),
+          SizedBox(height: 10),
+          Text("Busque pela categoria",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: database.getCategorias().length,
-            itemBuilder: (context, index) => categoriaItem(database.getCategorias()[index], context),
+          Expanded(
+            child: ListView.builder(
+              itemCount: database.getCategorias().length,
+              itemBuilder: (context, index) => categoriaItem(database.getCategorias()[index], context),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -45,7 +46,7 @@ class SearchScreen extends StatelessWidget {
         ));
       },
       child: Card(
-        margin: EdgeInsets.only(bottom: 10, left: 10, right: 10,),
+        margin: EdgeInsets.only(bottom: 10,),
         child: Container(
           height: MediaQuery.of(context).size.height / 6,
           decoration: BoxDecoration(

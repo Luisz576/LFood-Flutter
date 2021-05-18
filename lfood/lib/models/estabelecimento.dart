@@ -14,4 +14,8 @@ class Estabelecimento{
 
   Estabelecimento({required this.id, required this.nome, required this.imageUrl, required this.aberto, required this.categorias, required this.stars, required this.notas, required this.variacaoDeTempo, required this.promocoes, required this.cardapio});
 
+  bool isEmpty(){ return id <= 0; }
+
+  static final Estabelecimento empty = Estabelecimento(id: -1, nome: "", imageUrl: "", aberto: false, categorias: [], stars: 0, notas: 0, variacaoDeTempo: TimeVariation(start: 0, finish: 0), promocoes: [], cardapio: []);
+
 }

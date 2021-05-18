@@ -354,22 +354,22 @@ class ApiDatabase{
     "123": [
       Order(
         estabelecimentoId: 123,
-        id: "eTFUG6tg76G75fD4F",
+        id: "eTFUGTYugv7UG5fD4F",
         step: 0,
       ),
       Order(
         estabelecimentoId: 123,
-        id: "eTFUG6tg76G75fD4F",
+        id: "vTG67G6G75fD4F",
         step: 1,
       ),
       Order(
         estabelecimentoId: 123,
-        id: "eTFUG6tg76G75fD4F",
+        id: "G6767G67f65fD4F",
         step: 2,
       ),
       Order(
         estabelecimentoId: 123,
-        id: "eTFUG6tg76G75fD4F",
+        id: "eTFg67B6776GGF",
         step: 3,
       ),
     ],
@@ -381,6 +381,22 @@ class ApiDatabase{
     return Future.delayed(
       Duration(seconds: 2),
       () => _estabelecimentos,
+    );
+  }
+
+  Future<Estabelecimento> getEstabelecimentoById(int id){
+    return Future.delayed(
+      Duration(seconds: 1),
+      (){
+        Estabelecimento result = Estabelecimento.empty;
+        _estabelecimentos.forEach((estabelecimento) {
+          if(estabelecimento.id == id){
+            result = estabelecimento;
+            return;
+          }
+        });
+        return result;
+      },
     );
   }
 
@@ -414,7 +430,7 @@ class ApiDatabase{
 
   Future getPromocaoDestaque(String category){
     return Future.delayed(
-      Duration(seconds: 2),
+      Duration(seconds: 1),
       (){
         if(_promosDestaques.containsKey(category))
           return _promosDestaques[category];
@@ -426,7 +442,7 @@ class ApiDatabase{
 
   Future<List<Order>> getOrdersFromUser(int userId){
     return Future.delayed(
-      Duration(seconds: 2),
+      Duration(seconds: 1),
       (){
         if(_orders.containsKey("$userId"))
           return this._orders["$userId"]!;
