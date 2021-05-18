@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lfood/utils/AppColors.dart';
 import 'package:lfood/utils/star_fill.dart';
 
 class Stars extends StatelessWidget {
@@ -25,7 +26,9 @@ class Stars extends StatelessWidget {
         Text((stars / 2).toStringAsFixed(1),
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 16.0
+            fontSize: 16.0,
+            color: AppColors.black,
+            decoration: TextDecoration.none,
           ),
         ),
       ],

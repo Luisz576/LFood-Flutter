@@ -15,7 +15,7 @@ class CategoriaSmallItem extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(right: 10.0),
       child: InkWell(
-        onTap: (){ onTap(this); },
+        onTap: (){ onTap(categoria); },
         child: Card(
           shape: StadiumBorder(
             side: BorderSide.none,

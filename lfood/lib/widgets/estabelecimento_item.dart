@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lfood/models/estabelecimento.dart';
-import 'package:lfood/utils/AppColors.dart';
+import 'package:lfood/screens/product_details/product_details.dart';
+import 'package:lfood/widgets/camp_aberto.dart';
 import 'package:lfood/widgets/stars.dart';
 
 class EstabelecimentoItem extends StatelessWidget {
@@ -13,7 +14,9 @@ class EstabelecimentoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        print(data.nome);//TODO: OPEN ESTABELECIMENTO
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => ProductDetails(data: data,),
+        ));
       },
       child: Card(
         child: Padding(
@@ -44,31 +47,10 @@ class EstabelecimentoItem extends StatelessWidget {
                   SizedBox(height: 10,),
                   Stars(stars: data.stars),
                   SizedBox(height: 20,),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text("${data.variacaoDeTempo.start}~${data.variacaoDeTempo.finish}min",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold
-                        ),
-                      ),
-                      SizedBox(width: 5.0,),
-                      Container(
-                        height: 6.0,
-                        width: 6.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.black,
-                        ),
-                      ),
-                      SizedBox(width: 5.0,),
-                      Text(data.aberto ? "Aberto" : "Fechado",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold
-                        ),
-                      ),
-                    ],
-                  )
+                  CampAberto(
+                    variacaoDeTempo: data.variacaoDeTempo,
+                    aberto: data.aberto,
+                  ),
                 ],
               ),
             ],
