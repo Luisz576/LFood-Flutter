@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lfood/services/api_database.dart';
+import 'package:lfood/widgets/categoria_small_item.dart';
 
 class Categorias extends StatelessWidget {
 
@@ -15,7 +16,11 @@ class Categorias extends StatelessWidget {
       height: 40.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        children: databse.getCategorias().map((categoria) => categoria.getLikeWidget(active: (category == categoria.nome), onTap: this.onClick)).toList(),
+        children: databse.getCategorias().map((categoria) => CategoriaSmallItem(
+          active: (category == categoria.nome),
+          onTap: this.onClick,
+          categoria: categoria,
+        )).toList(),
       ),
     );
   }

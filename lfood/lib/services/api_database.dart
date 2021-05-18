@@ -1,6 +1,7 @@
 import 'package:lfood/models/categoria.dart';
 import 'package:lfood/models/estabelecimento.dart';
 import 'package:lfood/models/opicao.dart';
+import 'package:lfood/models/order.dart';
 import 'package:lfood/models/promocao.dart';
 import 'package:lfood/models/time_variation.dart';
 
@@ -349,6 +350,31 @@ class ApiDatabase{
     ),
   };
 
+  final _orders = {
+    "123": [
+      Order(
+        estabelecimentoId: 123,
+        id: "eTFUG6tg76G75fD4F",
+        step: 0,
+      ),
+      Order(
+        estabelecimentoId: 123,
+        id: "eTFUG6tg76G75fD4F",
+        step: 1,
+      ),
+      Order(
+        estabelecimentoId: 123,
+        id: "eTFUG6tg76G75fD4F",
+        step: 2,
+      ),
+      Order(
+        estabelecimentoId: 123,
+        id: "eTFUG6tg76G75fD4F",
+        step: 3,
+      ),
+    ],
+  };
+
   List<Categoria> getCategorias(){ return _categorias; }
 
   Future<List<Estabelecimento>> getEstabelecimentos(){
@@ -394,6 +420,18 @@ class ApiDatabase{
           return _promosDestaques[category];
         else
           return _promosDestaques["default"];
+      },
+    );
+  }
+
+  Future<List<Order>> getOrdersFromUser(int userId){
+    return Future.delayed(
+      Duration(seconds: 2),
+      (){
+        if(_orders.containsKey("$userId"))
+          return this._orders["$userId"]!;
+        else
+          return [];
       },
     );
   }
